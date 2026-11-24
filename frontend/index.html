@@ -160,7 +160,7 @@ if(form){
    rep.innerHTML=`<p class="label">Verification report</p><div class="verdict ${d.label}" role="status">${d.label}</div>
    <p>${d.label==='REAL'?'The wording and structure of this story resemble legitimate reporting in the training data.':'The wording and structure of this story resemble fabricated or misleading content in the training data.'}</p>
    ${c!=null?`<div class="meta"><div><span>Model confidence</span><b>${pct(c)}</b></div></div><div class="bar"><i id="cb" style="background:${col}"></i></div>`:''}
-   ${d.accuracy!=null?'<div class="meta"><div><span>Model accuracy</span><b>'+pct(d.accuracy)+'</b></div><div><span>Precision</span><b>'+pct(d.precision)+'</b></div></div>':''}
+   ${d.accuracy!=null?'<div class="meta"><div><span>Accuracy</span><b>'+pct(d.accuracy)+'</b></div><div><span>Precision</span><b>'+pct(d.precision)+'</b></div></div>':''}
    <p class="note">Accuracy and precision show how the model scored on its test data. They are not a probability for this article, and this is a judgement on writing patterns, not a fact-check.</p>${d.label==='FAKE'&&window.__rel?window.__rel(title):''}<br><button class="btn ghost" id="again">Analyse another article</button>`;
    requestAnimationFrame(()=>{const b=$('#cb');if(b)b.style.width=pct(c)});$('#again').onclick=reset;
   }catch(err){fail(err instanceof TypeError?'Could not reach the InFact server. Start it with python app.py and open the site at http://localhost:5000.':err.message)}
