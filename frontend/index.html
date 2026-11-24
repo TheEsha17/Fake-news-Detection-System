@@ -1,0 +1,211 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><title>InFact</title><style>@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;1,9..144,300&family=DM+Sans:wght@400;500&display=swap');
+:root{color-scheme:light;--ivory:#F5F0E8;--ink:#252321;--ox:#722F3E;--gold:#B99A72;--stone:#DCD3C7;--real:#3F6B4E;--fake:#8E3B2F;--serif:'Fraunces',Georgia,serif;--sans:'DM Sans',system-ui,sans-serif;--ease:cubic-bezier(.2,.7,.2,1)}
+*{box-sizing:border-box;margin:0}html{scroll-behavior:smooth}
+body{background:var(--ivory);color:var(--ink);font:400 1.05rem/1.7 var(--sans);opacity:0;transition:opacity .5s}
+body.in{opacity:1}body.out{opacity:0}
+a{color:inherit}:focus-visible{outline:2px solid var(--ox);outline-offset:3px}
+.wrap{max-width:1180px;margin:0 auto;padding:0 28px}
+h1,h2,h3{font-family:var(--serif);font-weight:300;line-height:1.05;letter-spacing:-.02em}
+h1{font-size:clamp(2.8rem,7.5vw,6.4rem)}h2{font-size:clamp(2rem,4.2vw,3.4rem)}h3{font-size:1.5rem;font-weight:500}
+em,.ox{color:var(--ox);font-style:italic}
+p{max-width:62ch}.muted{color:#5a5550}
+.label{font:500 .78rem var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--ox)}
+nav{position:sticky;top:0;z-index:20;background:rgba(245,240,232,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--stone)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:72px;gap:20px}
+.logo{font:500 1.6rem/1 var(--serif);letter-spacing:-.01em;text-decoration:none}.logo small{display:block;font:500 .6rem var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--ox);margin-top:5px}
+.links{display:flex;gap:26px;align-items:center}.links a{text-decoration:none;font-size:.92rem;position:relative;padding:4px 0}
+.links a:not(.btn)::after{content:"";position:absolute;left:0;bottom:0;height:1px;width:0;background:var(--ox);transition:width .35s var(--ease)}
+.links a:hover::after,.links a.on::after{width:100%}
+.menu{display:none;background:none;border:1px solid var(--stone);padding:8px 12px;font:inherit;cursor:pointer}
+.btn{display:inline-block;background:var(--ox);color:var(--ivory);padding:14px 26px;text-decoration:none;font:500 .82rem var(--sans);letter-spacing:.12em;text-transform:uppercase;border:1px solid var(--ox);cursor:pointer;transition:background .3s,color .3s,transform .3s var(--ease)}
+.btn:hover{background:transparent;color:var(--ox);transform:translateY(-2px)}.btn:disabled{opacity:.5;pointer-events:none}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--ink)}.btn.ghost:hover{background:var(--ink);color:var(--ivory)}
+.links .btn{padding:10px 18px}
+.hero{display:grid;grid-template-columns:1.25fr .75fr;gap:48px;align-items:center;padding:72px 0 96px}
+.hero h1 span{display:block;overflow:hidden;padding-bottom:.06em}.hero h1 span i{display:block;font-style:normal;transform:translateY(105%);animation:up 1s var(--ease) forwards}
+.hero h1 span:nth-child(2) i{animation-delay:.18s}.hero h1 span:nth-child(3){margin-top:.35em}.hero h1 span:nth-child(3) i{animation-delay:.5s}
+@keyframes up{to{transform:none}}
+.hero p.lede{font:300 1.35rem/1.55 var(--serif);margin:32px 0 36px}.hero .cta{display:flex;gap:14px;flex-wrap:wrap}
+.specimen{border:1px solid var(--gold);background:#faf6ef;padding:30px 28px;position:relative;box-shadow:14px 14px 0 var(--stone);overflow:hidden;transform:rotate(1.2deg)}
+.specimen .hl{font:500 1.35rem/1.2 var(--serif);margin-bottom:18px}.specimen .ln{height:7px;background:var(--stone);margin:11px 0}
+.specimen .ln.flag{background:var(--ox);opacity:.85}.specimen .tag{font-size:.72rem;letter-spacing:.14em;color:var(--ox);margin-top:22px;border-top:1px solid var(--stone);padding-top:14px}
+.scan{position:absolute;left:0;right:0;height:2px;background:var(--gold);box-shadow:0 0 18px 6px rgba(185,154,114,.45);animation:scan 4.5s ease-in-out infinite}
+@keyframes scan{0%,100%{top:0}50%{top:100%}}
+.rule{height:1px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform 1.2s var(--ease)}.rule.show{transform:none}
+section{padding:96px 0}.alt{background:var(--stone)}
+.split{display:grid;grid-template-columns:.8fr 1.2fr;gap:64px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--gold);margin-top:40px}
+.stat{padding:28px 24px 0 0}.stat b{display:block;font:300 3.4rem var(--serif);color:var(--ox);line-height:1}.stat span{font-size:.92rem}
+.pipe{counter-reset:s;border-left:1px solid var(--gold);margin-left:14px}
+.step{position:relative;padding:0 0 52px 48px}.step::before{counter-increment:s;content:counter(s);position:absolute;left:-15px;top:0;width:29px;height:29px;background:var(--ivory);border:1px solid var(--gold);border-radius:50%;text-align:center;font:500 .85rem/27px var(--sans);color:var(--ox)}
+.alt .step::before{background:var(--stone)}.step h3{margin-bottom:6px}.step code,code{background:var(--stone);padding:2px 6px;font-size:.85rem}.alt code{background:var(--ivory)}
+.cols{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-top:48px}.cols div{border-top:1px solid var(--ink);padding-top:18px}
+.cta-band{text-align:center}.cta-band h2{margin-bottom:32px}
+.rv{opacity:0;transform:translateY(26px);transition:opacity .9s var(--ease),transform .9s var(--ease)}.rv.show{opacity:1;transform:none}
+.page-head{padding:72px 0 40px}.page-head p{margin-top:20px;font-size:1.15rem}
+.form{display:grid;grid-template-columns:1.2fr .8fr;gap:56px;padding-bottom:96px}
+label{display:block;font:500 .78rem var(--sans);letter-spacing:.12em;text-transform:uppercase;margin:0 0 8px}
+input,textarea{width:100%;background:#faf6ef;border:1px solid var(--stone);border-bottom:2px solid var(--gold);padding:14px 16px;font:inherit;color:var(--ink);transition:border-color .3s}
+input:focus,textarea:focus{outline:none;border-color:var(--ox)}textarea{min-height:280px;resize:vertical}
+.err{color:var(--fake);font-size:.88rem;min-height:1.4em;margin-top:6px}.field{margin-bottom:22px}
+.report{border:1px solid var(--gold);background:#faf6ef;padding:36px;position:sticky;top:96px;min-height:340px;box-shadow:12px 12px 0 var(--stone)}
+.scanbox{height:150px;position:relative;overflow:hidden;border:1px solid var(--stone);margin:22px 0}.scanbox .ln{height:6px;background:var(--stone);margin:14px 16px}
+.verdict{font:300 clamp(3rem,6vw,4.4rem) var(--serif);line-height:1;margin:14px 0;clip-path:inset(0 100% 0 0);animation:wipe 1s .1s var(--ease) forwards}
+@keyframes wipe{to{clip-path:inset(0)}}
+.verdict.REAL{color:var(--real)}.verdict.FAKE{color:var(--fake)}
+.bar{height:6px;background:var(--stone);margin:8px 0 20px}.bar i{display:block;height:100%;width:0;transition:width 1.2s var(--ease)}
+.meta{border-top:1px solid var(--stone);padding-top:14px;font-size:.9rem;margin-top:14px}.meta div{display:flex;justify-content:space-between;padding:4px 0}
+.note{font-size:.85rem;color:#5a5550;margin-top:16px}
+.tbl{width:100%;border-collapse:collapse;margin:24px 0}.tbl th,.tbl td{text-align:left;padding:14px 12px;border-bottom:1px solid var(--stone);font-size:.95rem}.tbl th{font:500 .75rem var(--sans);letter-spacing:.12em;text-transform:uppercase}
+.tbl tr.best td:first-child{color:var(--ox);font-weight:500}.tblw{overflow-x:auto}
+.chart{margin:28px 0}.chart .row{display:grid;grid-template-columns:190px 1fr 64px;gap:14px;align-items:center;margin:10px 0;font-size:.92rem}
+.chart .tr{height:14px;background:var(--stone)}.chart .tr i{display:block;height:100%;width:0;background:var(--ox);transition:width 1.2s var(--ease)}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0}.tabs button{background:none;border:1px solid var(--stone);padding:8px 14px;font:inherit;font-size:.88rem;cursor:pointer;color:var(--ink)}.tabs button.on{background:var(--ink);color:var(--ivory);border-color:var(--ink)}
+.cm{display:grid;grid-template-columns:auto 1fr 1fr;max-width:420px;gap:4px;font-size:.85rem}.cm .c{padding:22px 10px;text-align:center}.cm .c b{display:block;font:300 1.9rem var(--serif)}.cm .h{padding:6px;color:#5a5550}
+.alert{border:1px solid var(--fake);background:#f3e4df;padding:18px 22px;margin:20px 0;max-width:70ch}
+footer{border-top:1px solid var(--gold);padding:40px 0;font-size:.9rem}footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+@media(max-width:900px){.hero,.split,.form{grid-template-columns:1fr;gap:40px}.cols,.stats{grid-template-columns:1fr}.report{position:static}
+.menu{display:block}.links{display:none;position:absolute;top:72px;left:0;right:0;background:var(--ivory);flex-direction:column;align-items:flex-start;padding:20px 28px;border-bottom:1px solid var(--stone)}.links.open{display:flex}
+.chart .row{grid-template-columns:1fr 60px}.chart .row .tr{grid-column:1/-1;order:3}section{padding:64px 0}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.hero h1 span i{transform:none}.rv{opacity:1;transform:none}.verdict{clip-path:none}.rule{transform:none}body{opacity:1}}
+html{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}</style></head><body><div id="nav"></div><main><div class="view" data-view="home" style="display:none">
+<div class="wrap"><div class="hero"><div>
+<p class="label">The digital age of misinformation</p><br>
+<h1 aria-label="Every headline has a story. Not every story is true."><span><i>Every headline</i></span><span><i>has a story.</i></span><span><i><em>Not every story</em> is true.</i></span></h1>
+<p class="lede">In an era where information travels faster than facts, knowing what to trust matters more than ever.</p>
+<div class="cta"><a class="btn" href="#detect">Analyse a story</a><a class="btn ghost" href="#technology">Explore the science</a></div></div>
+<div class="specimen" data-px="-.05" aria-hidden="true"><div class="scan"></div><div class="hl">Officials confirm shocking discovery, experts say “nobody saw it coming”</div>
+<div class="ln"></div><div class="ln"></div><div class="ln flag"></div><div class="ln"></div><div class="ln flag" style="width:60%"></div><div class="ln"></div><div class="ln" style="width:80%"></div>
+<div class="tag">TEXT PATTERNS UNDER REVIEW</div></div></div></div>
+<div class="wrap"><div class="rule"></div></div>
+<section><div class="wrap split"><div class="rv"><p class="label">The information problem</p><br><h2>Information is everywhere. <em>Truth is harder to find.</em></h2></div>
+<div class="rv"><p>A false story needs seconds to write and moments to share. A careful correction takes hours, and rarely travels as far. Readers see a headline, a source name and a share count, and must decide almost instantly.</p><br>
+<p>Fabricated stories lean on recognisable habits: urgent language, anonymous authorities, emotional framing and missing detail. Those habits leave measurable traces in the text itself.</p>
+<div class="cols"><div><h3>Speed</h3><p class="muted">Stories spread before anyone has checked them.</p></div><div><h3>Volume</h3><p class="muted">No newsroom or reader can verify everything.</p></div><div><h3>Persuasion</h3><p class="muted">Style is engineered to feel true, whatever the facts.</p></div></div></div></div></section>
+<section id="technology"><div class="wrap split"><div class="rv"><p class="label">The technology</p><br><h2>Classical machine learning, measured honestly.</h2></div><div class="rv"><p>InFact converts text to TF-IDF features and trains four well-understood classifiers: Logistic Regression, Linear SVM, Multinomial Naive Bayes and K-Nearest Neighbors. They are compared on the same held-out test set, and the best by F1-score serves predictions.</p><br><a class="btn ghost" href="#play">Test yourself</a></div></div></section>
+<section class="alt cta-band"><div class="wrap rv"><h2>Before you believe it. <em>Verify it.</em></h2><a class="btn" href="#detect">Check a news story</a></div></section>
+</div><div class="view" data-view="detect" style="display:none">
+<div class="wrap"><div class="page-head"><p class="label">Detect news</p><h1 style="font-size:clamp(2.4rem,5.5vw,4.4rem);margin-top:12px">Submit a story <em>for review.</em></h1><p class="muted">Paste a headline and the full article. The trained model returns a verdict in seconds.</p></div>
+<div class="form"><form id="detect" novalidate><div class="field"><label for="title">Headline</label><input id="title" maxlength="300" autocomplete="off"><div class="err" id="e-title" role="alert"></div></div>
+<style>.upl{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:8px}.upl label{margin:0}.btn.sm{padding:9px 16px;font-size:.74rem}#shotst{display:flex;gap:14px;align-items:center;margin-top:12px;font-size:.9rem}#shotst>div{flex:1}#shotst .bar{margin:6px 0 0}.thumb{width:64px;height:64px;object-fit:cover;border:1px solid var(--gold)}.rl{display:block;padding:7px 0;color:var(--ox);text-decoration:none;border-bottom:1px solid var(--stone);font-size:.92rem}.rl:hover{text-decoration:underline}</style>
+<div class="field"><div class="upl"><label for="text">Article text</label><button type="button" class="btn ghost sm" id="shotbtn">Upload screenshot</button><input id="shot" type="file" accept="image/*" hidden></div><textarea id="text" placeholder="Paste the article, or upload / drop a screenshot of it."></textarea><div id="shotst" role="status"></div><p class="note">Screenshots are read in your browser. The image is never uploaded.</p><div class="err" id="e-text" role="alert"></div></div><button class="btn" type="submit">Analyse news</button></form>
+<aside class="report" id="report" aria-live="polite"><p class="label">Verification report</p><h3 style="margin:14px 0 10px">Awaiting a story.</h3><p class="muted">Your verdict will appear here after you submit a headline and article.</p></aside></div></div>
+</div><div class="view" data-view="play" style="display:none"><style>.pg{max-width:760px;margin:0 auto;padding-bottom:96px}.ptop{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;font-size:.9rem;gap:16px}.dots{display:flex;gap:8px}.dots i{width:28px;height:4px;background:var(--stone);transition:background .4s}.dots i.on{background:var(--gold)}.dots i.ok{background:var(--real)}.dots i.no{background:var(--fake)}.pscore b{font:300 1.6rem var(--serif);color:var(--ox);margin:0 4px}
+.pcard{position:relative;border:1px solid var(--gold);background:#faf6ef;padding:40px 36px;box-shadow:12px 12px 0 var(--stone);min-height:380px;animation:cin .6s var(--ease)}@keyframes cin{from{opacity:0;transform:translateX(40px) rotate(2deg)}to{opacity:1;transform:none}}
+.pcard.shake{animation:shk .5s}@keyframes shk{20%,60%{transform:translateX(-10px)}40%,80%{transform:translateX(10px)}}
+.pcard h2{font-size:clamp(1.7rem,3.6vw,2.5rem);line-height:1.12;margin:12px 0 18px}.pcard .sn{color:#4a4540}
+.pbtns{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:30px}.pbtns .btn{padding:18px}.btn.real{background:var(--real);border-color:var(--real)}.btn.real:hover{background:transparent;color:var(--real)}.btn.fake{background:var(--fake);border-color:var(--fake)}.btn.fake:hover{background:transparent;color:var(--fake)}
+.stamp{position:absolute;right:22px;top:20px;font:500 1.5rem var(--serif);letter-spacing:.12em;border:3px solid;padding:4px 14px;transform:rotate(-8deg);animation:stp .5s var(--ease) both}@keyframes stp{from{opacity:0;transform:scale(2.4) rotate(-20deg)}to{opacity:1;transform:rotate(-8deg)}}
+.stamp.REAL{color:var(--real)}.stamp.FAKE{color:var(--fake)}.pwhy{border-top:1px solid var(--stone);margin-top:26px;padding-top:18px;animation:cin .5s var(--ease)}
+.pend{text-align:center;padding:20px 0}.pend b{display:block;font:300 6rem var(--serif);color:var(--ox);line-height:1}.pend p{margin:0 auto}.pend .btn{margin:6px}@media(max-width:600px){.pcard{padding:28px 22px}.stamp{position:static;display:inline-block;margin-top:14px}}</style><div class="wrap"><div class="page-head"><p class="label">Test yourself</p><h1 style="font-size:clamp(2.4rem,5.5vw,4.4rem);margin-top:12px">Real or <em>fake?</em></h1><p class="muted">Eight headlines. Make the call, then see what gave it away.</p></div><div class="pg"><div class="ptop"><div class="dots" id="pdots"></div><div class="pscore">Score<b id="psc">0</b>Streak<b id="pst">0</b></div></div><div class="pcard" id="pcard"></div><p class="note">Practice headlines were written for this game. They are not real news stories.</p></div></div><script>(function(){var Q=[{"h": "City council approves $4.2 million for new bus lanes after public consultation", "s": "The vote followed three public hearings. Officials said in a published meeting summary that the plan should cut journey times on two main routes.", "r": true, "w": "Specific figures, a described process and a public record you can look up are typical of straight reporting."}, {"h": "SHOCKING: Doctors HATE this one fruit that melts belly fat overnight!!!", "s": "One simple trick the health industry doesn’t want you to know. Millions are already doing it. Find out before it’s banned!", "r": false, "w": "Capital letters, triple exclamation marks, a miracle claim and unnamed “doctors” are classic warning signs."}, {"h": "Study of 12,000 adults links regular walking with lower risk of heart disease", "s": "Researchers followed participants for nine years. The authors note the result shows an association, not proof of cause.", "r": true, "w": "Measured language, a clear sample size and honest caveats suggest careful reporting."}, {"h": "Government secretly adding mind-control chemical to tap water, insiders reveal", "s": "Anonymous insiders say the plan has been hidden for decades. Share this before it gets deleted!", "r": false, "w": "Extraordinary claim, unnamed insiders and a push to share quickly. Nothing you can check."}, {"h": "Local library extends opening hours after volunteer group steps in", "s": "From March the library will open until 8pm on weekdays, the volunteer coordinator said. The new schedule is listed on the council website.", "r": true, "w": "Small, checkable details and a named role. You could confirm this with one phone call."}, {"h": "Scientists confirm the moon is hollow and aliens live inside, leaked memo claims", "s": "A leaked memo, which cannot be verified, says top scientists agree. Mainstream media refuses to cover it.", "r": false, "w": "An unverifiable memo, and “the media won’t cover it” is used to excuse the lack of evidence."}, {"h": "Airline apologises for delays as storm grounds 40 flights", "s": "A spokesperson said affected passengers were offered rebooking or refunds. The airline’s travel alerts page lists the cancelled routes.", "r": true, "w": "Concrete numbers, practical details and information you can verify on the airline’s own page."}, {"h": "Teacher fired for saying one word. Thousands outraged. What happened next will shock you", "s": "You won’t believe the reaction. Click to find out what the principal said!", "r": false, "w": "The headline withholds the facts on purpose. That is clickbait, designed to earn clicks, not to inform."}],$=function(s){return document.querySelector(s)},order,i,score,streak,card=$("#pcard"),dots=$("#pdots");
+function shuffle(a){for(var j=a.length-1;j>0;j--){var k=Math.floor(Math.random()*(j+1)),t=a[j];a[j]=a[k];a[k]=t}return a}
+function upd(){$("#psc").textContent=score;$("#pst").textContent=streak}
+function fresh(){card.classList.remove("shake");card.style.animation="none";void card.offsetWidth;card.style.animation=""}
+function start(){order=shuffle(Q.slice());i=0;score=0;streak=0;dots.innerHTML=order.map(function(){return"<i></i>"}).join("");upd();show()}
+function show(){var q=order[i];[].forEach.call(dots.children,function(d){d.classList.remove("on")});dots.children[i].classList.add("on");
+card.innerHTML='<p class="label">Headline '+(i+1)+' of '+order.length+'</p><h2>'+q.h+'</h2><p class="sn">'+q.s+'</p><div class="pbtns"><button class="btn real" data-a="1">Real</button><button class="btn fake" data-a="0">Fake</button></div>';fresh()}
+function ans(g){var q=order[i],ok=g===q.r;if(ok){score++;streak++}else streak=0;upd();dots.children[i].className=ok?"ok":"no";card.querySelector(".pbtns").remove();
+card.insertAdjacentHTML("beforeend",'<div class="stamp '+(q.r?"REAL":"FAKE")+'">'+(q.r?"REAL":"FAKE")+'</div><div class="pwhy"><p class="label" style="color:'+(ok?"var(--real)":"var(--fake)")+'">'+(ok?"Correct":"Not quite")+'</p><p>'+q.w+'</p><br><button class="btn" id="pnext">'+(i<order.length-1?"Next headline":"See my score")+'</button></div>');
+if(!ok){card.classList.remove("shake");void card.offsetWidth;card.classList.add("shake")}}
+function end(){var n=order.length,r=score>=7?"Sharp-eyed reader":score>=5?"Getting there":"Worth a second look";
+card.innerHTML='<div class="pend"><p class="label">Your result</p><b id="pbig">0</b><p class="muted">out of '+n+'</p><h3 style="margin:18px 0 6px">'+r+'</h3><p class="muted" style="margin-bottom:24px">Practice makes the warning signs easier to spot.</p><button class="btn" id="pagain">Play again</button><a class="btn ghost" href="#detect">Analyse a real story</a></div>';fresh();
+var c=0,t=setInterval(function(){c++;$("#pbig").textContent=c;if(c>=score)clearInterval(t)},180);if(!score)$("#pbig").textContent=0}
+card.onclick=function(e){var b=e.target.closest("button");if(!b)return;if(b.dataset.a!==undefined)ans(b.dataset.a==="1");else if(b.id==="pnext"){i++;i<order.length?show():end()}else if(b.id==="pagain")start()};start()})()</script></div><div class="view" data-view="guide" style="display:none"><style>.ck{display:flex;gap:14px;align-items:flex-start;padding:18px 8px;border-bottom:1px solid var(--stone);cursor:pointer;text-transform:none;letter-spacing:0;font:400 1.05rem/1.5 var(--sans);margin:0}.ck input{width:20px;height:20px;margin-top:3px;accent-color:#722F3E;flex:none;padding:0}.ck small{display:block;color:#5a5550;font-size:.9rem}.ck:hover{background:#faf6ef}.gres{border:1px solid var(--gold);background:#faf6ef;padding:32px;position:sticky;top:96px;box-shadow:12px 12px 0 var(--stone)}.gres b{display:block;font:300 3.6rem var(--serif);line-height:1;margin:10px 0}.gres .bar i{transition:width .6s var(--ease),background .4s}@media(max-width:900px){.gres{position:static}}</style>
+<div class="wrap"><div class="page-head"><p class="label">Spot the signs</p><h1 style="font-size:clamp(2.4rem,5.5vw,4.4rem);margin-top:12px">Read the news <em>with a sharper eye.</em></h1><p class="muted">Tick what you notice in a story. You'll see at a glance how cautious to be.</p></div>
+<div class="form" style="padding-bottom:56px"><div><label class="ck"><input type="checkbox"><span>The headline is written to shock or outrage<small>Strong emotion is a common way to get stories shared before they are checked.</small></span></label><label class="ck"><input type="checkbox"><span>There is no author, date or named source<small>Real reporting usually tells you who wrote it, and when.</small></span></label><label class="ck"><input type="checkbox"><span>It says “experts say” without naming anyone<small>Claims you can't trace back to a person or document are hard to trust.</small></span></label><label class="ck"><input type="checkbox"><span>No other outlet is reporting it<small>Big stories are usually covered by several independent sources.</small></span></label><label class="ck"><input type="checkbox"><span>Lots of CAPITALS or exclamation marks!!!<small>Calm, factual writing rarely needs to shout.</small></span></label><label class="ck"><input type="checkbox"><span>It urges you to share immediately<small>Pressure to act fast is designed to stop you from checking.</small></span></label></div>
+<aside class="gres" aria-live="polite"><p class="label">Your self-check</p><b id="gn">0 / 6</b><div class="bar"><i id="gb"></i></div><p id="gout"></p><br><button class="btn ghost" type="button" id="gclr">Clear</button></aside></div>
+<div class="rule"></div>
+<div class="cols rv" style="margin-bottom:56px"><div><h3>Pause</h3><p class="muted">If a story makes you angry or thrilled, wait a minute before sharing it.</p></div><div><h3>Check the source</h3><p class="muted">Look for the outlet's name, an author and other places reporting the same thing.</p></div><div><h3>Search the claim</h3><p class="muted">Type the main claim into a search engine and see who else confirms it.</p></div></div>
+<div style="padding-bottom:96px"><a class="btn" href="#detect">Analyse a story</a></div></div>
+<script>(function(){var ck=[].slice.call(document.querySelectorAll('.ck input')),o=document.getElementById('gout'),n=document.getElementById('gn'),b=document.getElementById('gb');
+function u(){var c=ck.filter(function(x){return x.checked}).length;n.textContent=c+' / '+ck.length;b.style.width=(c/ck.length*100)+'%';b.style.background=c>=3?'var(--fake)':c>0?'var(--gold)':'var(--real)';o.textContent=c===0?'Nothing ticked yet.':c<3?'A few warning signs. Look for a second source before sharing.':'Several red flags. Treat this story with caution.'}
+ck.forEach(function(x){x.onchange=u});document.getElementById('gclr').onclick=function(){ck.forEach(function(x){x.checked=false});u()};u()})()</script></div><div class="view" data-view="about" style="display:none">
+<div class="wrap"><div class="page-head"><p class="label">About</p><h1 style="font-size:clamp(2.4rem,5.5vw,4.4rem);margin-top:12px">A second look, <em>built in.</em></h1></div>
+<div class="split rv" style="padding-bottom:96px"><div><h3>What InFact is</h3><p class="muted" style="margin-top:10px">A web application that classifies a news article as real or fake using machine learning trained on labelled examples.</p><br><h3>Why it matters</h3><p class="muted" style="margin-top:10px">Misinformation shapes health decisions, elections and trust in institutions. Tools that flag suspicious writing give readers a prompt to slow down.</p></div>
+<div><h3>Objectives</h3><p class="muted" style="margin:10px 0 24px">Build an end-to-end classifier, compare several algorithms fairly, and present honest results in an interface people can use.</p>
+<h3>Technologies</h3><p class="muted" style="margin:10px 0 24px">Python, Flask, scikit-learn, Joblib, HTML, CSS and JavaScript.</p>
+<h3>Machine learning approach</h3><p class="muted" style="margin:10px 0 24px">TF-IDF features (words and word pairs) feed Logistic Regression, Linear SVM, Multinomial Naive Bayes and K-Nearest Neighbors. They are evaluated on a held-out test set; the best F1-score is deployed.</p>
+<h3>Limitations</h3><ul class="muted" style="margin:10px 0 0 20px;max-width:62ch"><li>It judges writing style, not facts. A well-written falsehood can pass; an unusual true story can be flagged.</li><li>It reflects its training data. Different topics, regions, languages or eras may perform worse than the reported metrics.</li><li>Satire, opinion and breaking news are hard cases.</li><li>Use it as one signal, then check primary sources.</li></ul></div></div></div>
+</div></main><div id="foot"></div><script>const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
+const PAGES=[['#home','Home'],['#detect','Detect News'],['#play','Test Yourself'],['#guide','Spot the Signs'],['#about','About']];
+const cur='#home';
+$('#nav').outerHTML=`<nav aria-label="Main"><div class="wrap"><a class="logo" href="#home">In<em>Fact</em><small>Facts over fiction</small></a><button class="menu" aria-expanded="false" aria-controls="lk">Menu</button><div class="links" id="lk">${PAGES.map(([h,t])=>`<a href="${h}" class="${h===cur?'on':''}">${t}</a>`).join('')}<a class="btn" href="#detect">Analyse News</a></div></div></nav>`;
+$('#foot').outerHTML=`<footer><div class="wrap"><span class="logo" style="font-size:1.1rem">In<em>Fact</em></span><span class="muted">Automated classification can be wrong. Verify important claims with primary sources.</span></div></footer>`;
+const mb=$('.menu');mb.onclick=()=>{const o=$('#lk').classList.toggle('open');mb.setAttribute('aria-expanded',o)};
+requestAnimationFrame(()=>document.body.classList.add('in'));
+addEventListener('pageshow',e=>e.persisted&&document.body.classList.add('in'));
+$$('a[href$=".html"]').forEach(a=>a.addEventListener('click',e=>{if(e.metaKey||e.ctrlKey||a.target)return;e.preventDefault();document.body.classList.replace('in','out');setTimeout(()=>location.href=a.href,380)}));
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;e.target.classList.add('show');io.unobserve(e.target);
+ $$('[data-count]',e.target).forEach(n=>{const t=+n.dataset.count,s=n.dataset.suffix||'',t0=performance.now();(function f(now){const p=Math.min((now-t0)/1600,1);n.textContent=Math.round(t*(1-Math.pow(1-p,3)))+s;p<1&&requestAnimationFrame(f)})(t0)})}),{threshold:.2});
+$$('.rv,.rule').forEach(n=>io.observe(n));
+const px=$$('[data-px]');if(px.length&&!matchMedia('(prefers-reduced-motion:reduce)').matches)addEventListener('scroll',()=>px.forEach(n=>n.style.transform=`translateY(${scrollY*+n.dataset.px}px) rotate(1.2deg)`),{passive:true});
+const pct=v=>(v*100).toFixed(2)+'%';
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const form=$('#detect');
+if(form){
+ const rep=$('#report'),empty=rep.innerHTML,lines='<div class="ln"></div>'.repeat(7);
+ const reset=()=>{rep.innerHTML=empty;form.reset();$('#title').focus()};
+ const fail=m=>{rep.innerHTML=`<p class="label">Report unavailable</p><div class="alert" role="alert">${esc(m)}</div><button class="btn ghost" id="again">Try again</button>`;$('#again').onclick=reset};
+ form.addEventListener('submit',async e=>{e.preventDefault();
+  const title=$('#title').value.trim(),text=$('#text').value.trim();let ok=true;
+  $('#e-title').textContent=title.length<5?(ok=false,'Enter a headline of at least 5 characters.'):'';
+  $('#e-text').textContent=text.split(/\s+/).filter(Boolean).length<30?(ok=false,'Paste the article text: at least 30 words.'):'';
+  if(!ok)return;
+  rep.innerHTML=`<p class="label">Analysing</p><div class="scanbox" aria-hidden="true">${lines}<div class="scan"></div></div><p class="muted" role="status">Reading the story…</p>`;
+  const btn=$('button[type=submit]',form);btn.disabled=true;
+  try{
+   const [r]=await Promise.all([fetch('/api/predict',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({title,text})}),new Promise(r=>setTimeout(r,1400))]);
+   const d=await r.json().catch(()=>({error:'The server returned an unexpected response.'}));if(!r.ok||d.error)throw new Error(d.error||'Request failed');
+   const c=d.confidence,col=d.label==='REAL'?'var(--real)':'var(--fake)';
+   rep.innerHTML=`<p class="label">Verification report</p><div class="verdict ${d.label}" role="status">${d.label}</div>
+   <p>${d.label==='REAL'?'The wording and structure of this story resemble legitimate reporting in the training data.':'The wording and structure of this story resemble fabricated or misleading content in the training data.'}</p>
+   ${c!=null?`<div class="meta"><div><span>Model confidence</span><b>${pct(c)}</b></div></div><div class="bar"><i id="cb" style="background:${col}"></i></div>`:''}
+   ${d.accuracy!=null?'<div class="meta"><div><span>Model accuracy</span><b>'+pct(d.accuracy)+'</b></div><div><span>Precision</span><b>'+pct(d.precision)+'</b></div></div>':''}
+   <p class="note">Accuracy and precision show how the model scored on its test data. They are not a probability for this article, and this is a judgement on writing patterns, not a fact-check.</p>${d.label==='FAKE'&&window.__rel?window.__rel(title):''}<br><button class="btn ghost" id="again">Analyse another article</button>`;
+   requestAnimationFrame(()=>{const b=$('#cb');if(b)b.style.width=pct(c)});$('#again').onclick=reset;
+  }catch(err){fail(err instanceof TypeError?'Could not reach the InFact server. Start it with python app.py and open the site at http://localhost:5000.':err.message)}
+  finally{btn.disabled=false}
+ });
+}
+const an=$('#analysis');
+if(an)(async()=>{
+ try{
+  const r=await fetch('/api/model-metrics'),d=await r.json().catch(()=>({error:'The server returned an unexpected response.'}));if(!r.ok||d.error)throw new Error(d.error);
+  const M=d.models,best=d.best_model,ds=d.dataset||{};
+  const keys=[['accuracy','Accuracy'],['precision','Precision'],['recall','Recall'],['f1','F1-score']];
+  an.innerHTML=`<div class="stats"><div class="stat"><b data-count="${M.length}">0</b><span>models trained and evaluated</span></div><div class="stat"><b data-count="${ds.test_size||0}">0</b><span>held-out test articles</span></div><div class="stat"><b style="font-size:2rem;line-height:1.5">${esc(best)}</b><span>highest F1, used on the Detect page</span></div></div>
+  <section style="padding-bottom:0"><h2>Performance comparison</h2><p class="muted" style="margin-top:12px">Positive class is REAL. Every figure is measured on the held-out test split.</p>
+  <div class="tblw"><table class="tbl"><tr><th>Model</th>${keys.map(k=>`<th>${k[1]}</th>`).join('')}</tr>${M.map(m=>`<tr class="${m.name===best?'best':''}"><td>${esc(m.name)}</td>${keys.map(k=>`<td>${pct(m[k[0]])}</td>`).join('')}</tr>`).join('')}</table></div>
+  <div class="tabs" id="mt">${keys.map((k,i)=>`<button data-k="${k[0]}" class="${i===3?'on':''}">${k[1]}</button>`).join('')}</div><div class="chart" id="ch"></div></section>
+  <section style="padding-bottom:0"><h2>Confusion matrix</h2><div class="tabs" id="ct">${M.map((m,i)=>`<button data-i="${i}" class="${m.name===best?'on':''}">${esc(m.name)}</button>`).join('')}</div><div id="cm"></div></section>`;
+  $$('.stat',an).forEach(n=>io.observe(n.parentElement));
+  const chart=k=>{$('#ch').innerHTML=M.map(m=>`<div class="row"><span>${esc(m.name)}</span><div class="tr"><i></i></div><b>${pct(m[k])}</b></div>`).join('');
+   const lo=Math.min(...M.map(m=>m[k]))-.02;setTimeout(()=>$$('#ch .tr i').forEach((b,i)=>b.style.width=Math.max(4,(M[i][k]-lo)/(1-lo)*100)+'%'),30)};
+  const cm=i=>{const [[tn,fp],[fn,tp]]=M[i].confusion_matrix,c=(v,g)=>`<div class="c" style="background:${g?'rgba(63,107,78,.18)':'rgba(142,59,47,.15)'}"><b>${v.toLocaleString()}</b>${g?'correct':'error'}</div>`;
+   $('#cm').innerHTML=`<div class="cm"><div></div><div class="h">Predicted FAKE</div><div class="h">Predicted REAL</div><div class="h">Actual FAKE</div>${c(tn,1)}${c(fp,0)}<div class="h">Actual REAL</div>${c(fn,0)}${c(tp,1)}</div>`};
+  chart('f1');cm(M.findIndex(m=>m.name===best));
+  $('#mt').onclick=e=>{const k=e.target.dataset.k;if(!k)return;$$('#mt button').forEach(b=>b.classList.toggle('on',b===e.target));chart(k)};
+  $('#ct').onclick=e=>{const i=e.target.dataset.i;if(i==null)return;$$('#ct button').forEach(b=>b.classList.toggle('on',b===e.target));cm(+i)};
+ }catch(err){an.innerHTML=`<div class="alert" role="alert"><b>No evaluation results yet.</b><br>${esc(err.message||'Could not reach the server.')} Train the models with <code>python train.py</code> in the backend folder, then reload.</div>`}
+})();
+
+const VIEWS=['home','detect','play','guide','about'];
+function route(){const h=location.hash.slice(1)||'home',v=VIEWS.includes(h)?h:'home';
+ $$('.view').forEach(n=>n.style.display=n.dataset.view===v?'':'none');
+ $$('.links a:not(.btn)').forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+v));
+ $('#lk').classList.remove('open');
+ if(h==='technology')requestAnimationFrame(()=>$('#technology').scrollIntoView());else scrollTo(0,0);}
+addEventListener('hashchange',route);route();
+</script><script>(function(){var inp=document.getElementById("shot"),btn=document.getElementById("shotbtn"),st=document.getElementById("shotst"),box=document.getElementById("text"),ttl=document.getElementById("title"),form=document.getElementById("detect"),lib;
+function load(){return lib||(lib=new Promise(function(res,rej){if(window.Tesseract)return res();var s=document.createElement("script");s.src="https://cdn.jsdelivr.net/npm/tesseract.js@5.1.1/dist/tesseract.min.js";s.onload=res;s.onerror=function(){lib=null;rej(new Error("load"))};document.head.appendChild(s)}))}
+function say(x){st.innerHTML=x}
+async function scan(f){if(!f)return;if(!/^image\//.test(f.type))return say('<span class="err">Please choose an image file (PNG or JPG).</span>');if(f.size>10485760)return say('<span class="err">That image is larger than 10 MB.</span>');
+btn.disabled=true;var w,p,b;say('<img class="thumb" alt="Uploaded screenshot" src="'+URL.createObjectURL(f)+'"><div><span id="shotp">Preparing scanner…</span><div class="bar"><i id="shotb" style="background:var(--ox)"></i></div></div>');p=document.getElementById("shotp");b=document.getElementById("shotb");
+try{await load();var dead=new Promise(function(_,rej){setTimeout(function(){rej(new Error("start"))},60000);window.__ocrFail=function(){rej(new Error("start"))}});w=await Promise.race([Tesseract.createWorker("eng",1,{langPath:"https://cdn.jsdelivr.net/npm/@tesseract.js-data/eng@1.0.0/4.0.0_best_int",errorHandler:function(){window.__ocrFail()},logger:function(m){if(m.status==="recognizing text"){p.textContent="Reading text… "+Math.round(m.progress*100)+"%";b.style.width=m.progress*100+"%"}}}),dead]);
+var r=await Promise.race([w.recognize(f),dead]),lines=r.data.text.split(/\n+/).map(function(l){return l.trim()}).filter(Boolean);if(lines.join(" ").split(/\s+/).length<10)throw new Error("empty");
+if(!ttl.value.trim()){ttl.value=lines[0].slice(0,200);lines=lines.slice(1)}box.value=lines.join("\n");p.textContent="Scan complete. Text added below.";b.style.width="100%";form.requestSubmit()}
+catch(e){say('<span class="err" role="alert">'+(e.message==="empty"?"Couldn’t find enough readable text. Try a sharper, larger screenshot.":"The scanner couldn’t start. It needs an internet connection and does not work inside the online preview. Run the project with python app.py and try again there.")+"</span>")}
+finally{if(w)w.terminate();btn.disabled=false;inp.value=""}}
+btn.onclick=function(){inp.click()};inp.onchange=function(){scan(inp.files[0])};
+["dragover","drop"].forEach(function(ev){box.addEventListener(ev,function(e){e.preventDefault();if(ev==="drop")scan(e.dataTransfer.files[0])})})})()</script><script>window.__rel=function(t){var q=encodeURIComponent(t.replace(/[^\p{L}\p{N}\s]/gu," ").split(/\s+/).filter(Boolean).slice(0,12).join(" ")),L=[["Google News","https://news.google.com/search?q="],["Fact-check search","https://toolbox.google.com/factcheck/explorer/search/"],["Reuters","https://www.reuters.com/site-search/?query="],["AP News","https://apnews.com/search?q="],["BBC News","https://www.bbc.co.uk/search?q="]];
+return'<div class="meta"><p class="label" style="margin:4px 0 6px">Look for reliable coverage</p><p class="note" style="margin:0 0 6px">Search trusted sources for this story:</p>'+L.map(function(l){return'<a class="rl" target="_blank" rel="noopener noreferrer" href="'+l[1]+q+'">'+l[0]+' →</a>'}).join("")+"</div>"}</script></body></html>

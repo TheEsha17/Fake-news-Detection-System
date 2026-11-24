@@ -1,0 +1,118 @@
+{
+  "best_model": "Linear SVM",
+  "averaging": "weighted",
+  "class_order": [
+    "REAL",
+    "FAKE"
+  ],
+  "source": "Printed outputs of the Colab notebook (WELFake, 80/20 split, test size 14,427).",
+  "caveat": "The notebook's split included uncleaned data, so some test articles also appear in training. These scores are likely optimistic.",
+  "dataset": {
+    "train_size": 57707,
+    "test_size": 14427
+  },
+  "models": [
+    {
+      "name": "Logistic Regression",
+      "accuracy": 0.9669,
+      "precision": 0.9672,
+      "recall": 0.9669,
+      "f1": 0.9669,
+      "confusion_matrix": [
+        [
+          6683,
+          323
+        ],
+        [
+          154,
+          7267
+        ]
+      ]
+    },
+    {
+      "name": "Linear SVM",
+      "accuracy": 0.9739,
+      "precision": 0.9740000000000001,
+      "recall": 0.9739,
+      "f1": 0.9739,
+      "confusion_matrix": [
+        [
+          6759,
+          247
+        ],
+        [
+          130,
+          7291
+        ]
+      ]
+    },
+    {
+      "name": "Naive Bayes",
+      "accuracy": 0.8976000000000001,
+      "precision": 0.8976999999999999,
+      "recall": 0.8976000000000001,
+      "f1": 0.8976000000000001,
+      "confusion_matrix": [
+        [
+          6195,
+          811
+        ],
+        [
+          666,
+          6755
+        ]
+      ]
+    },
+    {
+      "name": "KNN",
+      "accuracy": 0.8914,
+      "precision": 0.8918,
+      "recall": 0.8914,
+      "f1": 0.8914,
+      "confusion_matrix": [
+        [
+          6323,
+          683
+        ],
+        [
+          884,
+          6537
+        ]
+      ]
+    },
+    {
+      "name": "Decision Tree",
+      "accuracy": 0.9473,
+      "precision": 0.9481999999999999,
+      "recall": 0.9473,
+      "f1": 0.9473,
+      "confusion_matrix": [
+        [
+          6460,
+          546
+        ],
+        [
+          214,
+          7207
+        ]
+      ]
+    },
+    {
+      "name": "Random Forest",
+      "accuracy": 0.9621999999999999,
+      "precision": 0.9629000000000001,
+      "recall": 0.9621999999999999,
+      "f1": 0.9621,
+      "confusion_matrix": [
+        [
+          6584,
+          422
+        ],
+        [
+          124,
+          7297
+        ]
+      ]
+    }
+  ]
+}
